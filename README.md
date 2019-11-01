@@ -1,2 +1,2 @@
-# OpenJava.Private
-Java development kit for OpenJDK
+# OpenJava.DevelopmentKit
+Java development framework for OpenJDK
