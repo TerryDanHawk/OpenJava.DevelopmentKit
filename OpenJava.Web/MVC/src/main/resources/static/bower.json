@@ -1,0 +1,20 @@
+{
+  "name": "OpenJava.MVC",
+  "description": "Development framework for spring boot based on open JDK",
+  "main": "",
+  "authors": [
+    "TerryDan"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {  
+  }
+}

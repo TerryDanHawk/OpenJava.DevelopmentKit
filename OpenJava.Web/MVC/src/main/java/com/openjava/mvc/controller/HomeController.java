@@ -21,8 +21,6 @@ public class HomeController {
 
     @RequestMapping("/")
     public String Index(Map<String, Object> paramMap) {
-
-        /** 默认Map的内容会放大请求域中，页面可以直接取值*/
         UserModel user=this.service.select(1);
         paramMap.put("username", user.getUserName());
         paramMap.put("realname", user.getRealName());
@@ -33,7 +31,6 @@ public class HomeController {
     @RequestMapping("/user")
     public String User(Model model) {
 
-        /** 默认Map的内容会放大请求域中，页面可以直接取值*/
         UserModel user=this.service.select(1);
         model.addAttribute("user",user);
         return "user";
