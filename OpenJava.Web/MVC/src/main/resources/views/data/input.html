@@ -3,25 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link   rel="stylesheet" href="/lib/bulma/css/bulma.min.css" type="text/css" />
+    <script type="text/javascript"  src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/extend-library.js"></script>
 
-    <script type="text/javascript"  th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
-    <script type="text/javascript"  th:src="@{/js/view/input.js}"></script>
+
+    <script type="text/javascript"  src="/js/view/input.js"></script>
 </head>
 <body>
-  <hr/>
-  <div>
-      <form>
-          <div class="form-group">
-              <label for="btn_attach">Attachment</label>
-              <button style="margin-left:20px;" type="button" class="btn btn-outline-dark" id="btn_attach" onclick="Upload()">Upload</button>
-              <input type="file" id="file_attach" style="display:none;">
-          </div>
-      </form>
-      <ul id="filelist">
 
-      </ul>
-  </div>
-  <hr/>
+
+<section class="hero is-info is-large">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item is-active">
+                            Home
+                        </a>
+                        <a class="navbar-item">
+                            Datas
+                        </a>
+                        <a class="navbar-item">
+                            Reports
+                        </a>
+                        <span class="navbar-item">
+              <a class="button is-info is-inverted">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Download</span>
+              </a>
+            </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <p class="title">
+                Quick Start
+            </p>
+            <br/>
+            <p class="subtitle">
+                <hr/>
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <label for="btn_attach">Please upload your basic excel:</label>
+                            <button style="margin-left:20px;" type="button" class="button is-warning" id="btn_attach" onclick="Upload()">Upload</button>
+                            <input type="file" id="file_attach" style="display:none;">
+                        </div>
+                    </form>
+                    <ul id="filelist">
+
+                    </ul>
+                </div>
+                <hr/>
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
+</section>
 
 
 
