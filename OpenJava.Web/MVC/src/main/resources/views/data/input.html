@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript"  th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
+    <script type="text/javascript"  th:src="@{/js/view/input.js}"></script>
+</head>
+<body>
+  <hr/>
+  <div>
+      <form>
+          <div class="form-group">
+              <label for="btn_attach">Attachment</label>
+              <button style="margin-left:20px;" type="button" class="btn btn-outline-dark" id="btn_attach" onclick="Upload()">Upload</button>
+              <input type="file" id="file_attach" style="display:none;">
+          </div>
+      </form>
+      <ul id="filelist">
+
+      </ul>
+  </div>
+  <hr/>
+
+
+
+
+
+</body>
+</html>
