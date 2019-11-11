@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
     <link   rel="stylesheet" href="/lib/bulma/css/bulma.min.css" type="text/css" />
     <script type="text/javascript"  src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/js/extend-library.js"></script>
@@ -13,13 +13,13 @@
 <body>
 
 
-<section class="hero is-info is-large">
+<section class="hero  is-medium is-primary is-bold">
     <div class="hero-head">
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item">
-                        <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                        <img src="/images/logo.png" alt="Logo">
                     </a>
                     <span class="navbar-burger burger" data-target="navbarMenuHeroB">
             <span></span>
@@ -39,12 +39,12 @@
                             Reports
                         </a>
                         <span class="navbar-item">
-              <a class="button is-info is-inverted">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
-                </span>
-                <span>Download</span>
-              </a>
+<!--              <a class="button is-info is-inverted">-->
+<!--                <span class="icon">-->
+<!--                  <i class="fab fa-github"></i>-->
+<!--                </span>-->
+<!--                <span>Download</span>-->
+<!--              </a>-->
             </span>
                     </div>
                 </div>
@@ -63,6 +63,35 @@
                 <div>
                     <form>
                         <div class="form-group">
+                            <label>Please select year:</label>
+                            <div class="select is-rounded">
+                                <select>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="btn_attach">Please select month:</label>
+                            <div class="select is-rounded">
+                                <select>
+                                    <option value="1">Jan</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Mar</option>
+                                    <option value="4">Apr</option>
+                                    <option value="5">May</option>
+                                    <option value="6">Jun</option>
+                                    <option value="7">Jul</option>
+                                    <option value="8">Aug</option>
+                                    <option value="9">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
                             <label for="btn_attach">Please upload your basic excel:</label>
                             <button style="margin-left:20px;" type="button" class="button is-warning" id="btn_attach" onclick="Upload()">Upload</button>
                             <input type="file" id="file_attach" style="display:none;">
@@ -80,9 +109,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                <strong>Finance Tool</strong>&nbsp;&nbsp;&nbsp;<a href="#">&copy; CopyRight 2019~2020</a>
             </p>
         </div>
     </footer>

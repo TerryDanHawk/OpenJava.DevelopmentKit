@@ -3,19 +3,48 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
-    <link   rel="stylesheet" th:href="@{/lib/bulma/css/bulma.min.css}" type="text/css" />
-    <script type="text/javascript"  th:src="@{/lib/jquery/dist/jquery.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/extend-library.js}"></script>
+    <title>Login</title>
+    <link   rel="stylesheet"  href="/lib/bulma/css/bulma.min.css" type="text/css" />
+    <script type="text/javascript"  src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/extend-library.js"></script>
+    <link  rel="stylesheet" href="/css/view/index.css" type="text/css"/>
+
+
 </head>
 <body>
 
-    <h1>Hello!</h1>
-    <br/>
-    <span th:text="${username}"></span>
-    <span th:text="${realname}"></span>
+<!--    <h1>Hello!</h1>-->
+<!--    <br/>-->
+<!--    <span th:text="${username}"></span>-->
+<!--    <span th:text="${realname}"></span>-->
 
-
+<main>
+    <form class="form">
+        <div class="form__cover"></div>
+        <div class="form__loader">
+            <div class="spinner active">
+                <svg class="spinner__circular" viewBox="25 25 50 50">
+                    <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+                </svg>
+            </div>
+        </div>
+        <div class="form__content">
+            <h1>- Finance Tool -</h1>
+            <div class="styled-input">
+                <input type="text" id="username" class="styled-input__input" name="nickname">
+                <div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Username</span> </div>
+                <div class="styled-input__circle"></div>
+            </div>
+            <div class="styled-input">
+                <input type="password" id="password" class="styled-input__input">
+                <div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Password</span> </div>
+                <div class="styled-input__circle"></div>
+            </div>
+            <button type="button" class="styled-button"  onclick="Login()"> <span class="styled-button__real-text-holder"> <span class="styled-button__real-text">Login</span> <span class="styled-button__moving-block face"> <span class="styled-button__text-holder"> <span class="styled-button__text">Login</span> </span> </span><span class="styled-button__moving-block back"> <span class="styled-button__text-holder"> <span class="styled-button__text">Login</span> </span> </span> </span> </button>
+        </div>
+    </form>
+</main>
+<script  src="/js/view/index.js"></script>
 
 
 </body>

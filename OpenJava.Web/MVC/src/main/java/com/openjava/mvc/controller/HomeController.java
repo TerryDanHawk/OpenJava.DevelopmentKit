@@ -21,10 +21,9 @@ public class HomeController {
 
     @RequestMapping("/")
     public String Index(Map<String, Object> paramMap) {
-        UserModel user=this.service.select(1);
-        paramMap.put("username", user.getUserName());
-        paramMap.put("realname", user.getRealName());
-
+//        UserModel user=this.service.select(1);
+//        paramMap.put("username", user.getUserName());
+//        paramMap.put("realname", user.getRealName());
         return "index";
     }
 
