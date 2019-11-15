@@ -23,7 +23,7 @@ public class ExcelController {
     private ExcelService excelService;
 
     @PostMapping("/excelImport")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file){
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("year") String year,@RequestParam("month") String month){
         try {
             String fileName = fileService.storeFile(file);
 
@@ -31,8 +31,7 @@ public class ExcelController {
                     .path("/downloadFile/")
                     .path(fileName)
                     .toUriString();
-
-            excelService.Import(fileName);
+            excelService.Import(fileName,year,month);
 
             return new UploadFileResponse(fileName, fileDownloadUri,
                     file.getContentType(), file.getSize());
