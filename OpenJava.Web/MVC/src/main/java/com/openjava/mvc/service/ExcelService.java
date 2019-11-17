@@ -114,12 +114,6 @@ public class ExcelService {
 
         }
 
-        //循环读取科目
-//        for (int i = 1; i < 3; i++) {
-//
-//            System.out.println(row.getCell(i).getStringCellValue());
-//        }
-
 
     }
 
