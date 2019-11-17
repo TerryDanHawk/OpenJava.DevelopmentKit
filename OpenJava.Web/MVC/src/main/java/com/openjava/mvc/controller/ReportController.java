@@ -10,6 +10,6 @@ public class ReportController {
     @RequestMapping("/report/output")
     public String input(Model model) {
         //model.addAttribute("user",user);
-        return "/report/output";
+        return "report/output";
     }
 }

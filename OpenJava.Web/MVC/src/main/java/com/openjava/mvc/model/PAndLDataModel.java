@@ -2,7 +2,7 @@ package com.openjava.mvc.model;
 
 import java.math.BigDecimal;
 
-public class PAndLDataModel {
+public class PAndLDataModel  {
     private long Id;
     private String Year;
     private String Month;

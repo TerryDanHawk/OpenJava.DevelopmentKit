@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Data</title>
     <link   rel="stylesheet" href="/lib/bulma/css/bulma.min.css" type="text/css" />
     <script type="text/javascript"  src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/js/extend-library.js"></script>
 
 
-    <script type="text/javascript"  src="/js/view/input.js"></script>
+
 </head>
 <body>
 
@@ -29,13 +29,13 @@
                 </div>
                 <div id="navbarMenuHeroB" class="navbar-menu">
                     <div class="navbar-end">
-                        <a class="navbar-item is-active">
+                        <a class="navbar-item" href="/home/index">
                             Home
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item is-active">
                             Datas
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="/report/output">
                             Reports
                         </a>
                         <span class="navbar-item">
@@ -55,58 +55,12 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <p class="title">
-                Quick Start
+                Input Datas
             </p>
             <br/>
             <p class="subtitle">
                 <hr/>
-                <div>
-                    <form>
-                        <div class="columns">
-                            <div class="column is-4">
-                                <label>Please select year: &nbsp;</label>
-
-                                <div class="select is-rounded">
-                                    <select id="year">
-                                        <option value="2019">2020</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2018">2018</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="column is-4">
-                                <label>Please select month:&nbsp;</label>
-                                <div class="select is-rounded">
-                                    <select id="month">
-                                        <option value="1">Jan</option>
-                                        <option value="2">Feb</option>
-                                        <option value="3">Mar</option>
-                                        <option value="4">Apr</option>
-                                        <option value="5">May</option>
-                                        <option value="6">Jun</option>
-                                        <option value="7">Jul</option>
-                                        <option value="8">Aug</option>
-                                        <option value="9">Sep</option>
-                                        <option value="10">Oct</option>
-                                        <option value="11">Nov</option>
-                                        <option value="12">Dec</option>
-                                    </select>
-                                </div>
-                            </div>
-                        <div class="column is-4">
-                           <div class="column is-12">
-                            <label for="btn_attach">Please upload your basic excel:</label>
-                            <button style="margin-left:20px;" type="button" class="button is-warning" id="btn_attach" onclick="Upload()">Upload</button>
-                            <input type="file" id="file_attach" style="display:none;">
-                           </div>
-                        </div>
-                        </div>
-                    </form>
-                    <ul id="filelist">
-
-                    </ul>
-                </div>
+                   <br/>
                 <hr/>
             </p>
         </div>

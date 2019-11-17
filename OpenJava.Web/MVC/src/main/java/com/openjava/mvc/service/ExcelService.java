@@ -5,6 +5,7 @@ import com.openjava.mvc.mapper.PAndLDataMapper;
 import com.openjava.mvc.mapper.UserMapper;
 import com.openjava.mvc.model.ExchangeRateModel;
 import com.openjava.mvc.model.PAndLDataModel;
+import com.openjava.mvc.model.UserModel;
 import com.openjava.mvc.property.FileProperties;
 import com.openjava.mvc.util.ExcelHelper;
 import org.apache.poi.ss.usermodel.CellType;
@@ -31,15 +32,25 @@ public class ExcelService {
     private final Path fileStorageLocation; // 文件在本地存储的地址
 
     @Autowired
-    public ExcelService(PAndLDataMapper pldao,ExchangeRateMapper exdao, FileProperties fileProperties) {
+    public ExcelService(PAndLDataMapper _pldao,ExchangeRateMapper _exdao, FileProperties fileProperties) {
         this.fileStorageLocation = Paths.get(fileProperties.getUploadDir()).toAbsolutePath().normalize();
-        this.pldao = pldao;
-        this.exdao=exdao;
+        this.pldao = _pldao;
+        this.exdao=_exdao;
+
     }
 
     public void Import(String fileName,String year,String month) throws IOException {
         Path savelocation = this.fileStorageLocation.resolve(fileName);
         String excelName=savelocation.toAbsolutePath().toString();
+
+//        PAndLDataModel tmodel = new PAndLDataModel();
+//        tmodel.setYear("2019");
+//        tmodel.setMonth("11");
+//        tmodel.setAccountDescription("Test Item");
+//        tmodel.setMonthActual(new BigDecimal(100));
+//        tmodel.setYTDActual(new BigDecimal(20));
+//        this.pldao.insert(tmodel);
+
         //将文件读入
         InputStream in  = new FileInputStream(new File(excelName));
         //创建工作簿

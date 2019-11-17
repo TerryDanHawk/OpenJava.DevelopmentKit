@@ -24,7 +24,7 @@ public class DataController {
     @RequestMapping("/data/input")
     public String input(Model model) {
         //model.addAttribute("user",user);
-        return "/data/input";
+        return "data/input";
     }
 
 
