@@ -17,7 +17,7 @@ public interface PAndLDataMapper {
 
     // 根据 ID 查询
     @Select("SELECT * FROM PAndLDatas WHERE id=#{id}")
-    PAndLDataModel select(int id);
+    PAndLDataModel selectById(int id);
 
 
     // 根据 Year和Month 查询
@@ -34,7 +34,7 @@ public interface PAndLDataMapper {
 
     // 根据 ID 删除
     @Delete("DELETE FROM PAndLDatas WHERE id=#{id}")
-    int delete(Integer id);
+    int deleteById(Integer id);
 
 
     // 根据 Year和Month 删除

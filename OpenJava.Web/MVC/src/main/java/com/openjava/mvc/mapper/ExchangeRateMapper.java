@@ -17,7 +17,7 @@ public interface ExchangeRateMapper {
 
     // 根据 ID 查询
     @Select("SELECT * FROM ExchangeRates WHERE id=#{id}")
-    ExchangeRateModel select(int id);
+    ExchangeRateModel selectById(int id);
 
 
     // 根据 Year和Month 查询
@@ -34,7 +34,7 @@ public interface ExchangeRateMapper {
 
     // 根据 ID 删除
     @Delete("DELETE FROM ExchangeRate WHERE id=#{id}")
-    int delete(Integer id);
+    int deleteById(Integer id);
 
     // 根据 Year和Month 删除
     @Delete("DELETE FROM ExchangeRate WHERE Year=#{year} and Month=#{month}")

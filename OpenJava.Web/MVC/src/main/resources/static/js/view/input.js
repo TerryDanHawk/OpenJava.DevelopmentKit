@@ -3,8 +3,8 @@
         $("#file_attach").change(function () {
             var formData = new FormData();
             formData.append("file", document.getElementById("file_attach").files[0]);
-            formdata.append("year",$("#year").val());
-            formdata.append("month",$("#month").val())
+            formData.append("year",$("#year").val());
+            formData.append("month",$("#month").val());
             $.ajax({
                 url: "/excelImport",
                 type: "POST",
@@ -20,6 +20,7 @@
                 processData: false,
                 success: function (response) {
                     console.log(response);
+                    window.location.href="/report/output";
                     //清空File
                     var file = $("#file_attach")
                     file.after(file.clone().val(""));
