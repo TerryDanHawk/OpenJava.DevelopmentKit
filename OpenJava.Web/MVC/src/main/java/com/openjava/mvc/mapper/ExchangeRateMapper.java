@@ -12,7 +12,7 @@ public interface ExchangeRateMapper {
 
     // 插入 并查询id 赋给传入的对象
     @Insert("INSERT INTO ExchangeRates(Year,Month,FmCurr,ToCurr,Category,Rate1,Rate2,Rate3,Rate4,Rate5,Rate6,Rate7,Rate8,Rate9,Rate10,Rate11,Rate12) VALUES(#{Year},#{Month},#{FmCurr},#{ToCurr},#{Category},#{Rate1},#{Rate2},#{Rate3},#{Rate4},#{Rate5},#{Rate6},#{Rate7},#{Rate8},#{Rate9},#{Rate10},#{Rate11},#{Rate12})")
-    @SelectKey(statement = "SELECT seq id FROM sqlite_sequence WHERE (name = 'ExchangeRate')", before = false, keyProperty = "id", resultType = int.class)
+    @SelectKey(statement = "SELECT seq id FROM sqlite_sequence WHERE (name = 'ExchangeRates')", before = false, keyProperty = "id", resultType = int.class)
     int insert(ExchangeRateModel model);
 
     // 根据 ID 查询
@@ -33,10 +33,10 @@ public interface ExchangeRateMapper {
     int updateValue(ExchangeRateModel model);
 
     // 根据 ID 删除
-    @Delete("DELETE FROM ExchangeRate WHERE id=#{id}")
+    @Delete("DELETE FROM ExchangeRates WHERE id=#{id}")
     int deleteById(Integer id);
 
     // 根据 Year和Month 删除
-    @Delete("DELETE FROM ExchangeRate WHERE Year=#{year} and Month=#{month}")
+    @Delete("DELETE FROM ExchangeRates WHERE Year=#{year} and Month=#{month}")
     int delete(String year,String month);
 }

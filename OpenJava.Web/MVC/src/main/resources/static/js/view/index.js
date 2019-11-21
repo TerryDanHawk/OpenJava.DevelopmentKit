@@ -5,6 +5,7 @@
             formData.append("file", document.getElementById("file_attach").files[0]);
             formData.append("year",$("#year").val());
             formData.append("month",$("#month").val());
+            $("#progress").show();
             $.ajax({
                 url: "/excelImport",
                 type: "POST",
@@ -25,13 +26,15 @@
                     var file = $("#file_attach")
                     file.after(file.clone().val(""));
                     file.remove();
+                     $("#progress").hide();
                 },
                 failure: function (response) {
-                    console.log(response);
+                    alert(response);
                     //清空File
                     var file = $("#file_attach")
                     file.after(file.clone().val(""));
                     file.remove();
+                    $("#progress").hide();
 
                 }
             });
@@ -40,3 +43,19 @@
         });
 
     }
+
+
+    $(document).ready(function(){
+
+        var nowdate=new Date();
+        var nowYear=nowdate.getFullYear();
+        var nowMonth=nowdate.getMonth()+1;
+        for(var i=1;i>=-5;i--)
+        {
+           $("#year").append(String.format("<option value='{0}'>{0}</option>",nowYear+i));
+        }
+        $("#year").val(nowYear);
+        $("#month").val(nowMonth);
+
+
+    });
