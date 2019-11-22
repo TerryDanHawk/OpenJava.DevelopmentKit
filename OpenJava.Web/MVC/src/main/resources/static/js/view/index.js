@@ -21,7 +21,7 @@
                 processData: false,
                 success: function (response) {
                     console.log(response);
-                    window.location.href="/report/output";
+                    window.location.href="/Report/List";
                     //清空File
                     var file = $("#file_attach")
                     file.after(file.clone().val(""));

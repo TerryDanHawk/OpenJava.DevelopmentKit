@@ -67,7 +67,7 @@ function Login()
    var password=$("#password").val();
    if(username=="Administrator" && password=="123456")
    {
-      window.location.href="/home/index";
+      window.location.href="/Home/Index";
    }
    else
    {

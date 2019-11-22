@@ -7,9 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReportController {
 
-    @RequestMapping("/report/output")
-    public String input(Model model) {
+    @RequestMapping("/Report/List")
+    public String List(Model model) {
         //model.addAttribute("user",user);
-        return "report/output";
+        return "Report/List";
+    }
+
+    @RequestMapping("/Report/YTDTrend")
+    public String YTDTrend(Model model) {
+        //model.addAttribute("user",user);
+        return "Report/YTDTrend";
+    }
+
+    @RequestMapping("/Report/MonthTrend")
+    public String MonthTrend(Model model) {
+        //model.addAttribute("user",user);
+        return "Report/MonthTrend";
     }
 }

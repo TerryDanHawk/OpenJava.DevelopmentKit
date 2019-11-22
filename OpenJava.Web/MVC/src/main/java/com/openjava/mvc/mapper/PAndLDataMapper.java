@@ -22,7 +22,7 @@ public interface PAndLDataMapper {
 
     // 根据 Year和Month 查询
     @Select("SELECT * FROM PAndLDatas WHERE Year=#{year} and Month=#{month}")
-    PAndLDataModel select(String year,String month);
+    List<PAndLDataModel> select(String year,String month);
 
     // 查询全部
     @Select("SELECT * FROM PAndLDatas")

@@ -21,10 +21,10 @@ public class DataController {
         this.service = service;
     }
 
-    @RequestMapping("/data/input")
-    public String input(Model model) {
+    @RequestMapping("/Data/List")
+    public String List(Model model) {
         //model.addAttribute("user",user);
-        return "data/input";
+        return "Data/List";
     }
 
 

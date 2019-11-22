@@ -1,0 +1,25 @@
+table
+{
+   margin:10px;
+   width:1920px;
+}
+    table th,td{
+
+      border:1px solid black;
+    }
+.firstcol{
+  width:200px;
+}
+.table-container{
+     overflow: auto;
+     width: 100%;
+     overflow-x:scroll;
+     margin:10px;
+}
+.textcenter{
+  text-align:center;
+}
+.textcenter th{
+  text-align:center !important;
+}
+

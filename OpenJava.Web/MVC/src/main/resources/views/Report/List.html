@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Report</title>
     <link   rel="stylesheet" href="/lib/bulma/css/bulma.min.css" type="text/css" />
+    <link   rel="stylesheet" href="/lib/fontawesome/css/all.css" type="text/css"/>
     <script type="text/javascript"  src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/js/extend-library.js"></script>
 
@@ -29,22 +30,16 @@
                 </div>
                 <div id="navbarMenuHeroB" class="navbar-menu">
                     <div class="navbar-end">
-                        <a class="navbar-item" href="home/index">
+                        <a class="navbar-item" href="/Home/Index">
                             Home
                         </a>
-                        <a class="navbar-item" href="/data/input">
+                        <a class="navbar-item" href="/Data/List">
                             Datas
                         </a>
                         <a class="navbar-item  is-active">
                             Reports
                         </a>
                         <span class="navbar-item">
-<!--              <a class="button is-info is-inverted">-->
-                            <!--                <span class="icon">-->
-                            <!--                  <i class="fab fa-github"></i>-->
-                            <!--                </span>-->
-                            <!--                <span>Download</span>-->
-                            <!--              </a>-->
             </span>
                     </div>
                 </div>
@@ -54,15 +49,31 @@
 
     <div class="hero-body">
         <div class="container has-text-centered">
-            <p class="title">
-                Output Report
-            </p>
-            <br/>
-            <p class="subtitle">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a href="#">
+                            <span class="icon is-small">
+                              <i class="fas fa-book" aria-hidden="true"></i>
+                            </span>
+                                <span>Month Trend</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span class="icon is-small">
+                              <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+                            </span>
+                                <span>YTD Trend</span>
+                            </a>
+                        </li>
+                    </ul>
+            </nav>
             <hr/>
-            <br/>
+            <iframe id="reportframe" src="/Report/YTDTrend" scrolling="yes" frameborder="0" width="100%" height="800px;">
+
+            </iframe>
             <hr/>
-            </p>
         </div>
     </div>
 

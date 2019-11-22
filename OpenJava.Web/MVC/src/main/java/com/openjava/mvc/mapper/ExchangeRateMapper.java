@@ -11,7 +11,7 @@ import java.util.List;
 public interface ExchangeRateMapper {
 
     // 插入 并查询id 赋给传入的对象
-    @Insert("INSERT INTO ExchangeRates(Year,Month,FmCurr,ToCurr,Category,Rate1,Rate2,Rate3,Rate4,Rate5,Rate6,Rate7,Rate8,Rate9,Rate10,Rate11,Rate12) VALUES(#{Year},#{Month},#{FmCurr},#{ToCurr},#{Category},#{Rate1},#{Rate2},#{Rate3},#{Rate4},#{Rate5},#{Rate6},#{Rate7},#{Rate8},#{Rate9},#{Rate10},#{Rate11},#{Rate12})")
+    @Insert("INSERT INTO ExchangeRates(Year,Month,FmCurr,ToCurr,Category,Rate) VALUES(#{Year},#{Month},#{FmCurr},#{ToCurr},#{Category},#{Rate})")
     @SelectKey(statement = "SELECT seq id FROM sqlite_sequence WHERE (name = 'ExchangeRates')", before = false, keyProperty = "id", resultType = int.class)
     int insert(ExchangeRateModel model);
 
@@ -29,7 +29,7 @@ public interface ExchangeRateMapper {
     List<ExchangeRateModel> selectAll();
 
     // 更新 value
-    @Update("UPDATE ExchangeRates SET FmCurr=#{FmCurr},ToCurr=#{ToCurr},Category=#{Category},Rate1=#{Rate1},Rate2=#{Rate2},Rate3=#{Rate3},Rate4=#{Rate4},Rate5=#{Rate5},Rate6=#{Rate6},Rate7=#{Rate7},Rate8=#{Rate8},Rate9=#{Rate9},Rate10=#{Rate10},Rate11=#{Rate11},Rate12=#{Rate12} WHERE id=#{id}")
+    @Update("UPDATE ExchangeRates SET FmCurr=#{FmCurr},ToCurr=#{ToCurr},Category=#{Category},Rate=#{Rate} WHERE id=#{id}")
     int updateValue(ExchangeRateModel model);
 
     // 根据 ID 删除

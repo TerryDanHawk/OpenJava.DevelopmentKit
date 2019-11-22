@@ -28,9 +28,9 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/home/index")
+    @RequestMapping("/Home/Index")
     public String Index(Map<String, Object> paramMap) {
-        return "home/index";
+        return "Home/Index";
     }
 
 
