@@ -2,9 +2,11 @@ package com.openjava.mvc.service;
 
 import com.openjava.mvc.mapper.ExchangeRateMapper;
 import com.openjava.mvc.mapper.PAndLDataMapper;
+import com.openjava.mvc.mapper.PAndLManualInputMapper;
 import com.openjava.mvc.mapper.UserMapper;
 import com.openjava.mvc.model.ExchangeRateModel;
 import com.openjava.mvc.model.PAndLDataModel;
+import com.openjava.mvc.model.PAndLManualInputModel;
 import com.openjava.mvc.model.UserModel;
 import com.openjava.mvc.property.FileProperties;
 import com.openjava.mvc.util.ExcelHelper;
@@ -27,17 +29,19 @@ public class ExcelService {
 
     private final PAndLDataMapper pldao;
     private final ExchangeRateMapper exdao;
+    private final PAndLManualInputMapper plmdao;
     private final Path fileStorageLocation; // 文件在本地存储的地址
 
     @Autowired
-    public ExcelService(PAndLDataMapper _pldao,ExchangeRateMapper _exdao, FileProperties fileProperties) {
+    public ExcelService(PAndLDataMapper _pldao, ExchangeRateMapper _exdao, PAndLManualInputMapper _plmdao, FileProperties fileProperties) {
         this.fileStorageLocation = Paths.get(fileProperties.getUploadDir()).toAbsolutePath().normalize();
         this.pldao = _pldao;
         this.exdao=_exdao;
+        this.plmdao=_plmdao;
 
     }
 
-    public void Import(String fileName,String year,String month) throws IOException {
+    public void Import(String fileName,String year,String month,BigDecimal exchangerate,BigDecimal headcount) throws IOException {
         Path savelocation = this.fileStorageLocation.resolve(fileName);
         String excelName=savelocation.toAbsolutePath().toString();
         //将文件读入
@@ -49,7 +53,7 @@ public class ExcelService {
             //读取第一个sheet PAndLData
             Sheet sheet = wb.getSheetAt(0);
             int maxrow = sheet.getPhysicalNumberOfRows();
-            pldao.delete(year,month);
+            this.pldao.delete(year,month);
             for (int i = 1; i < maxrow; i++) {
                 try {
 
@@ -61,13 +65,33 @@ public class ExcelService {
                     model.setAccountDescription(row.getCell(0).getStringCellValue());
                     model.setMonthActual(new BigDecimal(row.getCell(1).getNumericCellValue()));
                     model.setYTDActual(new BigDecimal(row.getCell(2).getNumericCellValue()));
-                    pldao.insert(model);
+                    this.pldao.insert(model);
                 }
                 catch (Exception ex)
                 {
                     System.out.println(ex.getMessage());
                 }
             }
+        }
+        {
+            this.plmdao.delete(year,month);
+            PAndLManualInputModel model=new PAndLManualInputModel();
+            model.setYear(year);
+            model.setMonth(month);
+            model.setItem("HeadCount");
+            model.setValue(headcount);
+            this.plmdao.insert(model);
+        }
+        {
+            this.exdao.delete(year,month);
+            ExchangeRateModel model=new ExchangeRateModel();
+            model.setYear(year);
+            model.setMonth(month);
+            model.setFmCurr("CNY");
+            model.setToCurr("");
+            model.setCategory("PRate");
+            model.setRate(exchangerate);
+            this.exdao.insert(model);
         }
 
 

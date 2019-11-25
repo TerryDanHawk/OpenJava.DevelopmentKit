@@ -5,6 +5,8 @@
             formData.append("file", document.getElementById("file_attach").files[0]);
             formData.append("year",$("#year").val());
             formData.append("month",$("#month").val());
+            formData.append("exchangerate",$("#exchangerate").val());
+            formData.append("headcount",$("#headcount").val());
             $("#progress").show();
             $.ajax({
                 url: "/excelImport",

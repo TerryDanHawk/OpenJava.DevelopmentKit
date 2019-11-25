@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 @RestController
 public class ExcelController {
@@ -23,7 +24,7 @@ public class ExcelController {
     private ExcelService excelService;
 
     @PostMapping("/excelImport")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("year") String year,@RequestParam("month") String month){
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("year") String year, @RequestParam("month") String month,@RequestParam("headcount") BigDecimal headcount, @RequestParam("exchangerate") BigDecimal exchangerate){
         try {
             String fileName = fileService.storeFile(file);
 
@@ -31,7 +32,7 @@ public class ExcelController {
                     .path("/downloadFile/")
                     .path(fileName)
                     .toUriString();
-            excelService.Import(fileName,year,month);
+            excelService.Import(fileName,year,month,exchangerate,headcount);
 
             return new UploadFileResponse(fileName, fileDownloadUri,
                     file.getContentType(), file.getSize());

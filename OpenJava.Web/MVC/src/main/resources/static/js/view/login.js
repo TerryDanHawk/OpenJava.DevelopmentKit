@@ -65,16 +65,30 @@ function Login()
 {
    var username=$("#username").val();
    var password=$("#password").val();
-   if(username=="Administrator" && password=="123456")
-   {
-      window.location.href="/Home/Index";
-   }
-   else
-   {
+   password=btoa(password);
+   var formdata= new FormData();
+   formData.append("username",username);
+   formData.append("password",password);
+   $.ajax({
+                url: "/api/login",
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                  if(response=="")
+                  {
+                   window.href.location="/Home/Index";
+                  }
+                  else
+                  {
+                     $("#msg").html(response);
+                     $("#msgbox").addClass("is-active");
+                  }
+                },
+                failure: function (response) {
+                      $("#msg").html(response);
+                      $("#msgbox").addClass("is-active");
 
-
-
-   }
-
+                }
+            });
 
 }

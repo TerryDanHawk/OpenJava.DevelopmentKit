@@ -19,6 +19,8 @@ public interface UserMapper {
     // 根据 ID 查询
     @Select("SELECT * FROM Users WHERE id=#{id}")
     UserModel select(int id);
+    @Select("SELECT * FROM Users where UserName={#username} and Password={#pwdmd5}")
+    UserModel Login(String username,String pwdmd5);
 
     // 查询全部
     @Select("SELECT * FROM Users")
@@ -31,4 +33,6 @@ public interface UserMapper {
     // 根据 ID 删除
     @Delete("DELETE FROM Users WHERE id=#{id}")
     int delete(Integer id);
+
+
 }
