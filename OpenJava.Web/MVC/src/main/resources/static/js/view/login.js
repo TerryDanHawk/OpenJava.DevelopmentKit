@@ -66,17 +66,21 @@ function Login()
    var username=$("#username").val();
    var password=$("#password").val();
    password=btoa(password);
-   var formdata= new FormData();
+   var formData= new FormData();
    formData.append("username",username);
    formData.append("password",password);
    $.ajax({
                 url: "/api/login",
                 type: "POST",
+                contentType: false,
+                // 告诉jQuery不要去设置Content-Type请求头
+                processData: false,
+                // 告诉jQuery不要去处理发送的数据
                 data: formData,
                 success: function (response) {
                   if(response=="")
                   {
-                   window.href.location="/Home/Index";
+                    window.location.href="/Home/Index";
                   }
                   else
                   {
@@ -92,3 +96,9 @@ function Login()
             });
 
 }
+
+function CloseModal()
+{
+   $("#msgbox").removeClass("is-active");
+}
+

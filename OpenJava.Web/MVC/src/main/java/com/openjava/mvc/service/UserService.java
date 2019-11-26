@@ -7,6 +7,7 @@ import com.openjava.mvc.util.Encryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.beans.PropertyEditorSupport;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -23,13 +24,18 @@ public class UserService {
 
     public String Login(String username,String password) throws UnsupportedEncodingException {
         String result="";
-        username=username.replace("'","");
-        password= Base64Operator.Decode(password);
-        password= Encryptor.generateMD5(password);
-        UserModel user=this.udao.Login(username,password);
-        if(user==null)
+        try {
+            username = username.replace("'", "");
+            password = Base64Operator.Decode(password);
+            password = Encryptor.generateMD5(password);
+            UserModel user = this.udao.Login(username, password);
+            if (user == null) {
+                result = "Invalid username or password!";
+            }
+        }
+        catch (Exception ex)
         {
-            result="Invalid username or password!";
+            result=ex.getMessage();
         }
         return  result;
     }

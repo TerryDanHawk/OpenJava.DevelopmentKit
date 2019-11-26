@@ -36,7 +36,7 @@ public class ExcelService {
 
     }
 
-    public void Import(String fileName,String year,String month,double exchangerate,double headcount) throws IOException {
+    public void Import(String fileName,String year,String month,double exchangerate,double staff_headcount,double secondee_headcount) throws IOException {
         Path savelocation = this.fileStorageLocation.resolve(fileName);
         String excelName=savelocation.toAbsolutePath().toString();
         //将文件读入
@@ -70,12 +70,23 @@ public class ExcelService {
         }
         {
             this.plmdao.delete(year,month);
-            PAndLManualInputModel model=new PAndLManualInputModel();
-            model.setYear(year);
-            model.setMonth(month);
-            model.setItem("HeadCount");
-            model.setValue(headcount);
-            this.plmdao.insert(model);
+            {
+                PAndLManualInputModel model = new PAndLManualInputModel();
+                model.setYear(year);
+                model.setMonth(month);
+                model.setItem("Staff");
+                model.setValue(staff_headcount);
+                this.plmdao.insert(model);
+            }
+            {
+
+                PAndLManualInputModel model = new PAndLManualInputModel();
+                model.setYear(year);
+                model.setMonth(month);
+                model.setItem("Secondee");
+                model.setValue(secondee_headcount);
+                this.plmdao.insert(model);
+            }
         }
         {
             this.exdao.delete(year,month);
@@ -100,8 +111,124 @@ public class ExcelService {
             this.ytddao.insert(model);
 
         }
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Staff Costs");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"       staff cost").getYTDActual()/1000.0-
+                    this.pldao.GetItem(year,month,"         61281  Rebill of MP Costs").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Less: Rebilling and grants received");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"         61281  Rebill of MP Costs").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+        }
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Cost Of Sales - Manpower");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"       Total Cost of Sales (COS/MP/Costs Recove").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Depreciation & Amortisation");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"        Depreciation").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Administrative");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"        Administrative").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Repair & Maint.");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"        Repair & Maintenance").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Property Related");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"        Property Related").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("gain/(loss) of Realised / Unreal exchange difference (Trade)");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"        Other Operating Expenses").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
 
 
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Interest income");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"        Finance Income").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Interest expense");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"        Finance Cost").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
+
+
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Exceptional items");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"         61502  Special Release Scheme Payment").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
+        }
 
 
     }
