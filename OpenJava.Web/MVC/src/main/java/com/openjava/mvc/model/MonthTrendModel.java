@@ -1,13 +1,13 @@
 package com.openjava.mvc.model;
 
-import java.math.BigDecimal;
+
 
 public class MonthTrendModel {
     private int Id;
     private String Year;
     private String Month;
     private String ItemName;
-    private BigDecimal MonthMoney;
+    private double MonthMoney;
 
     public int getId() {
         return Id;
@@ -41,11 +41,11 @@ public class MonthTrendModel {
         ItemName = itemName;
     }
 
-    public BigDecimal getMonthMoney() {
+    public double getMonthMoney() {
         return MonthMoney;
     }
 
-    public void setMonthMoney(BigDecimal monthMoney) {
+    public void setMonthMoney(double monthMoney) {
         MonthMoney = monthMoney;
     }
 }

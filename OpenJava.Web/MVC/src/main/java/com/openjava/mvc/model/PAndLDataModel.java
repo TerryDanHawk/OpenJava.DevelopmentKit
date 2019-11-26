@@ -1,14 +1,14 @@
 package com.openjava.mvc.model;
 
-import java.math.BigDecimal;
+
 
 public class PAndLDataModel  {
     private long Id;
     private String Year;
     private String Month;
     private String AccountDescription;
-    private BigDecimal MonthActual;
-    private BigDecimal YTDActual;
+    private double MonthActual;
+    private double YTDActual;
 
     public long getId() {
         return Id;
@@ -42,19 +42,19 @@ public class PAndLDataModel  {
         AccountDescription = accountDescription;
     }
 
-    public BigDecimal getMonthActual() {
+    public double getMonthActual() {
         return MonthActual;
     }
 
-    public void setMonthActual(BigDecimal monthActual) {
+    public void setMonthActual(double monthActual) {
         MonthActual = monthActual;
     }
 
-    public BigDecimal getYTDActual() {
+    public double getYTDActual() {
         return YTDActual;
     }
 
-    public void setYTDActual(BigDecimal YTDActual) {
+    public void setYTDActual(double YTDActual) {
         this.YTDActual = YTDActual;
     }
 }

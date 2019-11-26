@@ -1,13 +1,13 @@
 package com.openjava.mvc.model;
 
-import java.math.BigDecimal;
+
 
 public class PAndLManualInputModel {
     private int Id;
     private String Year;
     private String Month;
     private String Item;
-    private BigDecimal Value;
+    private double Value;
 
     public int getId() {
         return Id;
@@ -41,11 +41,11 @@ public class PAndLManualInputModel {
         Item = item;
     }
 
-    public BigDecimal getValue() {
+    public double getValue() {
         return Value;
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(double value) {
         Value = value;
     }
 }

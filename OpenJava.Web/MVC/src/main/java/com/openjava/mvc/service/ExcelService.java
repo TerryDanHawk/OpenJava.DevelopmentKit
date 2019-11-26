@@ -1,13 +1,7 @@
 package com.openjava.mvc.service;
 
-import com.openjava.mvc.mapper.ExchangeRateMapper;
-import com.openjava.mvc.mapper.PAndLDataMapper;
-import com.openjava.mvc.mapper.PAndLManualInputMapper;
-import com.openjava.mvc.mapper.UserMapper;
-import com.openjava.mvc.model.ExchangeRateModel;
-import com.openjava.mvc.model.PAndLDataModel;
-import com.openjava.mvc.model.PAndLManualInputModel;
-import com.openjava.mvc.model.UserModel;
+import com.openjava.mvc.mapper.*;
+import com.openjava.mvc.model.*;
 import com.openjava.mvc.property.FileProperties;
 import com.openjava.mvc.util.ExcelHelper;
 import org.apache.poi.ss.usermodel.CellType;
@@ -18,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -30,18 +23,20 @@ public class ExcelService {
     private final PAndLDataMapper pldao;
     private final ExchangeRateMapper exdao;
     private final PAndLManualInputMapper plmdao;
+    private final YTDTrendMapper ytddao;
     private final Path fileStorageLocation; // 文件在本地存储的地址
 
     @Autowired
-    public ExcelService(PAndLDataMapper _pldao, ExchangeRateMapper _exdao, PAndLManualInputMapper _plmdao, FileProperties fileProperties) {
+    public ExcelService(PAndLDataMapper _pldao, ExchangeRateMapper _exdao, PAndLManualInputMapper _plmdao, YTDTrendMapper _ytddao, FileProperties fileProperties) {
         this.fileStorageLocation = Paths.get(fileProperties.getUploadDir()).toAbsolutePath().normalize();
         this.pldao = _pldao;
         this.exdao=_exdao;
         this.plmdao=_plmdao;
+        this.ytddao=_ytddao;
 
     }
 
-    public void Import(String fileName,String year,String month,BigDecimal exchangerate,BigDecimal headcount) throws IOException {
+    public void Import(String fileName,String year,String month,double exchangerate,double headcount) throws IOException {
         Path savelocation = this.fileStorageLocation.resolve(fileName);
         String excelName=savelocation.toAbsolutePath().toString();
         //将文件读入
@@ -63,8 +58,8 @@ public class ExcelService {
                     model.setYear(year);
                     model.setMonth(month);
                     model.setAccountDescription(row.getCell(0).getStringCellValue());
-                    model.setMonthActual(new BigDecimal(row.getCell(1).getNumericCellValue()));
-                    model.setYTDActual(new BigDecimal(row.getCell(2).getNumericCellValue()));
+                    model.setMonthActual(row.getCell(1).getNumericCellValue());
+                    model.setYTDActual(row.getCell(2).getNumericCellValue());
                     this.pldao.insert(model);
                 }
                 catch (Exception ex)
@@ -92,6 +87,18 @@ public class ExcelService {
             model.setCategory("PRate");
             model.setRate(exchangerate);
             this.exdao.insert(model);
+        }
+        //计算并保存数据
+        {
+            YTDTrendModel model=new YTDTrendModel();
+            model.setItemName("Intercompany Revenue excluding mark-up");
+            model.setYear(year);
+            model.setMonth(month);
+            double value=this.pldao.GetItem(year,month,"         50141  Interco IT Services").getYTDActual()/1000.0-
+                             this.pldao.GetItem(year,month,"         50142  Interco BPO Services").getYTDActual()/1000.0;
+            model.setYTDMoney(value);
+            this.ytddao.insert(model);
+
         }
 
 

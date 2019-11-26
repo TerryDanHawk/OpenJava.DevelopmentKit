@@ -1,13 +1,13 @@
 package com.openjava.mvc.model;
 
-import java.math.BigDecimal;
+
 
 public class YTDTrendModel {
     private int Id;
     private String Year;
     private String Month;
     private String ItemName;
-    private BigDecimal YTDMoney;
+    private double YTDMoney;
 
     public int getId() {
         return Id;
@@ -41,11 +41,11 @@ public class YTDTrendModel {
         ItemName = itemName;
     }
 
-    public BigDecimal getYTDMoney() {
+    public double getYTDMoney() {
         return YTDMoney;
     }
 
-    public void setYTDMoney(BigDecimal YTDMoney) {
+    public void setYTDMoney(double YTDMoney) {
         this.YTDMoney = YTDMoney;
     }
 }

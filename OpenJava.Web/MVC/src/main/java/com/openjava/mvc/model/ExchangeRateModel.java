@@ -1,6 +1,6 @@
 package com.openjava.mvc.model;
 
-import java.math.BigDecimal;
+
 
 public class ExchangeRateModel {
     private long Id;
@@ -9,7 +9,7 @@ public class ExchangeRateModel {
     private String FmCurr;
     private String ToCurr;
     private String Category;
-    private BigDecimal Rate;
+    private double Rate;
 
     public long getId() {
         return Id;
@@ -59,11 +59,11 @@ public class ExchangeRateModel {
         Category = category;
     }
 
-    public BigDecimal getRate() {
+    public double getRate() {
         return Rate;
     }
 
-    public void setRate(BigDecimal rate) {
+    public void setRate(double rate) {
         Rate = rate;
     }
 }
