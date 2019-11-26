@@ -6,7 +6,8 @@
             formData.append("year",$("#year").val());
             formData.append("month",$("#month").val());
             formData.append("exchangerate",$("#exchangerate").val());
-            formData.append("headcount",$("#headcount").val());
+            formData.append("staff_headcount",$("#staff_headcount").val());
+             formData.append("secondee_headcount",$("#secondee_headcount").val());
             $("#progress").show();
             $.ajax({
                 url: "/excelImport",

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link   rel="stylesheet" href="/lib/bulma/css/bulma.min.css" type="text/css" />
+    <link   rel="stylesheet" href="/lib/fontawesome/css/all.min.css" type="text/css" />
     <script type="text/javascript"  src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/js/extend-library.js"></script>
 
@@ -54,44 +55,89 @@
             <br/>
             <p class="subtitle">
             <hr/>
-            <div>
+            <div class="card">
                 <form>
-                    <div class="columns">
-                        <div class="column is-4">
-                            <label>Please select year: &nbsp;</label>
+                    <div class="card-content">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="lable">Date :</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="select is-rounded" style="width:100%;">
+                                        <select id="year" style="width:100%;">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field">
 
-                            <div class="select is-rounded">
-                                <select id="year">
-
-                                </select>
+                                    <div class="select is-rounded" style="width:100%;">
+                                        <select id="month" style="width:100%;">
+                                            <option value="1">Jan</option>
+                                            <option value="2">Feb</option>
+                                            <option value="3">Mar</option>
+                                            <option value="4">Apr</option>
+                                            <option value="5">May</option>
+                                            <option value="6">Jun</option>
+                                            <option value="7">Jul</option>
+                                            <option value="8">Aug</option>
+                                            <option value="9">Sep</option>
+                                            <option value="10">Oct</option>
+                                            <option value="11">Nov</option>
+                                            <option value="12">Dec</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="column is-4">
-                            <label>Please select month:&nbsp;</label>
-                            <div class="select is-rounded">
-                                <select id="month">
-                                    <option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="lable">HeadCount :</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="number" placeholder="Staff Headcount" id="staff_headcount">
+                                        <span class="icon is-small is-left">
+                                          <i class="fas fa-user"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="number" placeholder="Secondee Headcount" id="secondee_headcount">
+                                        <span class="icon is-small is-left">
+                                          <i class="fas fa-user"></i>
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="column is-4">
-                            <div class="column is-12">
-                                <label for="btn_attach">Please upload your basic excel:</label>
-                                <button style="margin-left:20px;" type="button" class="button is-warning" id="btn_attach" onclick="Upload()">Upload</button>
+
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="lable">ExchangeRate : &nbsp;</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control has-icons-left">
+                                            <input class="input" type="number" placeholder="CNY to SGD" id="exchangerate">
+                                            <span class="icon is-small is-left">
+                                          <i class="fas fa-globe"></i>
+                                        </span>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        <div class="field">
+
+                                <button style="margin-left:20px;" type="button" class="button is-warning" id="btn_attach" onclick="Upload()">Upload Your Excel</button>
                                 <input type="file" id="file_attach" style="display:none;">
-                            </div>
+
                         </div>
                     </div>
                 </form>
@@ -99,7 +145,6 @@
 
                 </ul>
             </div>
-            <hr/>
             <br/>
             <progress id="progress"  style="display:none;" class="progress is-danger" max="100">30%</progress>
             </p>
