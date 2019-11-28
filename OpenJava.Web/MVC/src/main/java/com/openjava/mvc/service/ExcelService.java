@@ -94,7 +94,7 @@ public class ExcelService {
             model.setYear(year);
             model.setMonth(month);
             model.setFmCurr("CNY");
-            model.setToCurr("");
+            model.setToCurr("SGD");
             model.setCategory("PRate");
             model.setRate(exchangerate);
             this.exdao.insert(model);
@@ -116,7 +116,7 @@ public class ExcelService {
             model.setItemName("Staff Costs");
             model.setYear(year);
             model.setMonth(month);
-            double value=this.pldao.GetItem(year,month,"       staff cost").getYTDActual()/1000.0-
+            double value=this.pldao.GetItem(year,month,"       Staff Cost").getYTDActual()/1000.0-
                     this.pldao.GetItem(year,month,"         61281  Rebill of MP Costs").getYTDActual()/1000.0;
             model.setYTDMoney(value);
             this.ytddao.insert(model);

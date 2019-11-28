@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ReportController {
 
-    @RequestMapping("/Report/List")
-    public String List(Model model) {
-        //model.addAttribute("user",user);
-        return "Report/List";
-    }
 
     @RequestMapping("/Report/YTDTrend")
     public String YTDTrend(Model model) {

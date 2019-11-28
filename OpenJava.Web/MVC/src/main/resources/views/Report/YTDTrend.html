@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:tr="http://www.trymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>YthTrend</title>
+    <title>Report</title>
     <link   rel="stylesheet" href="/lib/bulma/css/bulma.min.css" type="text/css" />
+    <link   rel="stylesheet" href="/lib/fontawesome/css/all.css" type="text/css"/>
     <link   rel="stylesheet" href="/css/view/trend-table.css" type="text/css" />
     <script type="text/javascript"  src="/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/js/extend-library.js"></script>
@@ -12,132 +13,665 @@
 
 </head>
 <body>
-<div class="table-container">
 
-    <table>
-        <tread>
-           <tr>
-             <th class="firstcol">Company Name :</th>
-             <th colspan="4">-</th>
-             <th colspan="2">Period:</th>
-             <th colspan="4">-</th>
-             <th colspan="18"></th>
-           </tr>
-           <tr>
-               <th class="firstcol">Co ID :</th>
-               <th colspan="4">-</th>
-               <th colspan="2">Currency:</th>
-               <th colspan="4">-</th>
-               <th colspan="18"></th>
-           </tr>
-           <tr>
-               <th class="firstcol">Trend Analysisi</th>
-               <th col="28"></th>
-           </tr>
-           <tr class="textcenter">
-               <th class="firstcol"></th>
-               <th colspan="2">Apr 19</th>
-               <th colspan="2">May 19</th>
-               <th colspan="2">Jun 19</th>
-               <th colspan="2">Jul 19</th>
-               <th colspan="2">Aug 19</th>
-               <th colspan="2">Sep 19</th>
-               <th colspan="2">Oct 19</th>
-               <th colspan="2">Nov 19</th>
-               <th colspan="2">Dec 19</th>
-               <th colspan="2">Jan 20</th>
-               <th colspan="2">Feb 20</th>
-               <th colspan="2">Mar 19</th>
-               <th colspan="2">Total</th>
-               <th colspan="2">Mtr-TO-Mtr VARIANCE</th>
-           </tr>
-           <tr class="textcenter" >
-               <th class="firstcol"></th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-               <th colspan="2">0</th>
-           </tr>
-           <tr class="textcenter">
-               <th class="firstcol"></th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
-               <th>(RMB'000)</th>
-               <th>S$ equiv</th>
 
-           </tr>
-        </tread>
-        <tbody>
-           <tr>
-               <td class="firstcol">OPERATING REVENUE</td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-           </tr>
-        </tbody>
+<section class="hero  is-medium is-primary is-bold">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img src="/images/logo.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="/Home/Index">
+                            Home
+                        </a>
+                        <a class="navbar-item" href="/Data/List">
+                            Datas
+                        </a>
+                        <a class="navbar-item  is-active">
+                            Reports
+                        </a>
+                        <span class="navbar-item">
+            </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
 
-    </table>
+    <div class="hero-body">
+        <div class="has-text-centered">
+            <div class="tabs is-centered">
+                <ul>
+                    <li class="is-active">
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-book" aria-hidden="true"></i></span>
+                            <span>YTD Trend Analysis</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span class="icon is-small"><i class="far fa-puzzle-pieces" aria-hidden="true"></i></span>
+                            <span>Month Trend Analysis</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+            <div class="table-container">
+               <!-- Table -->
+                <table>
+                    <tread>
+                        <tr>
+                            <th class="firstcol"> Company Name :</th>
+                            <th colspan="4">-</th>
+                            <th colspan="2" style="padding-left:5px;"> Period:</th>
+                            <th colspan="4"> -</th>
+                            <th colspan="18"></th>
+                        </tr>
+                        <tr>
+                            <th class="firstcol"> Co ID :</th>
+                            <th colspan="4"> -</th>
+                            <th colspan="2" style="padding-left:5px;"> Currency:</th>
+                            <th colspan="4"> -</th>
+                            <th colspan="18"></th>
+                        </tr>
+                        <tr>
+                            <th class="firstcol"> Trend Analysisi</th>
+                            <th colspan="28"></th>
+                        </tr>
+                        <tr class="textcenter">
+                            <th class="firstcol"></th>
+                            <th colspan="2">Apr 19</th>
+                            <th colspan="2">May 19</th>
+                            <th colspan="2">Jun 19</th>
+                            <th colspan="2">Jul 19</th>
+                            <th colspan="2">Aug 19</th>
+                            <th colspan="2">Sep 19</th>
+                            <th colspan="2">Oct 19</th>
+                            <th colspan="2">Nov 19</th>
+                            <th colspan="2">Dec 19</th>
+                            <th colspan="2">Jan 20</th>
+                            <th colspan="2">Feb 20</th>
+                            <th colspan="2">Mar 19</th>
+                            <th colspan="2">Total</th>
+                            <th colspan="2">Mtr-TO-Mtr VARIANCE</th>
+                        </tr>
+                        <tr class="textcenter" >
+                            <th class="firstcol"></th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                            <th colspan="2">0</th>
+                        </tr>
+                        <tr class="textcenter">
+                            <th class="firstcol"></th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
+                            <th>(RMB'000)</th>
+                            <th>S$ equiv</th>
 
-</div>
+                        </tr>
+                    </tread>
+                    <tbody>
+                    <tr>
+                        <td class="firstcol" style="font-weight: bold;"> OPERATING REVENUE:</td>
+                        <td colspan="28"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol"> External Revenue</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="firstcol" style="color:red;"> Intercompany Revenue excluding mark-up</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="29"></td>
+                    </tr>
+                    <tr>
+                        <td class="firstcol" style="color:blue;"> TOTAL OPERATING REVENUE</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="29"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol" style="font-weight: bold;"> OPERATING EXPENSES:</td>
+                        <td colspan="28"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Staff Costs</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Less: Rebilling and grants received</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">ICC Cost (for NCS only)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="firstcol">Cost Of Sales</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Cost Of Sales - Manpower</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Depreciation & Amortisation</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Administrative</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Selling Expense</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Repair & Maint.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Property Related</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Liquidated Damages</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstcol">Other operating expenses</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+               <!-- Table -->
+            </div>
+            <hr/>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Finance Tool</strong>&nbsp;&nbsp;&nbsp;<a href="#">&copy; CopyRight 2019~2020</a>
+            </p>
+        </div>
+    </footer>
+</section>
+
+
 
 
 

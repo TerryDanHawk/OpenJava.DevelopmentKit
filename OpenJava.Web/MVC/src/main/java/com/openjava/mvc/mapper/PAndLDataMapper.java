@@ -24,7 +24,7 @@ public interface PAndLDataMapper {
     @Select("SELECT * FROM PAndLDatas WHERE Year=#{year} and Month=#{month}")
     List<PAndLDataModel> select(String year,String month);
 
-    @Select("SELECT * FROM PAndLDatas WHERE Year=#{year} and Month=#{month} and AccountDescription=#{accountdescription}")
+    @Select("SELECT * FROM PAndLDatas WHERE Year=#{year} and Month=#{month} and AccountDescription=#{accountdescription} limit 1")
     PAndLDataModel GetItem(String year,String month,String accountdescription);
 
     // 查询全部

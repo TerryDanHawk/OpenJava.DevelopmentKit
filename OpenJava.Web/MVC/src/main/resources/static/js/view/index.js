@@ -24,7 +24,7 @@
                 processData: false,
                 success: function (response) {
                     console.log(response);
-                    window.location.href="/Report/List";
+                    window.location.href="/Report/YTDTrend";
                     //清空File
                     var file = $("#file_attach")
                     file.after(file.clone().val(""));
