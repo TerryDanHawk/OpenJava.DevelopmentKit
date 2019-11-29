@@ -2,7 +2,7 @@ table
 {
    margin:10px;
    width:1920px;
-   font-size:13px;
+   font-size:12px;
 }
     table th,td{
 
@@ -17,7 +17,7 @@ table
      overflow: auto;
      width: 100%;
      overflow-x:scroll;
-     margin:10px;
+     padding-right:10px;
      background-color: lightskyblue;
 }
 .textcenter{
@@ -25,5 +25,9 @@ table
 }
 .textcenter th{
   text-align:center !important;
+}
+
+.separator{
+ height:24px;
 }
 
